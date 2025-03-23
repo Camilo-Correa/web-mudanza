@@ -8,6 +8,8 @@ export default defineConfig({
     port: process.env.PORT || 3000, // Usa el puerto asignado o 3000 por defecto
   },
   preview: {
+    host: true, // Permite conexiones externas en modo preview
+    port: process.env.PORT || 3000, // Usa el puerto asignado o 3000 por defecto
     allowedHosts: ['web-mudanza.onrender.com'], // Agrega tu dominio aquí
   },
 });
