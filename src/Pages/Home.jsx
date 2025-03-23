@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function Home() {
     const [currentText, setCurrentText] = useState("Mudarte");
-    const texts = ["Mudanzas", "Vaciados", "Embalajes", "Montajes", "Portes", "Traslados"];
+    const texts = ["Vaciado", "Embalaje", "Montaje", "Portes", "Traslado"];
     const transitionInterval = 3000; // Tiempo en milisegundos para cambiar el texto
 
     useEffect(() => {
