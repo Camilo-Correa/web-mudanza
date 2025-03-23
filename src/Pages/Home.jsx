@@ -27,8 +27,8 @@ function Home() {
         <section className="min-h-[90vh] grid grid-cols-1 xl:grid-cols-8 ">
             {/* Información */}
             <div className="md:col-span-4 flex items-center justify-center p-8 xl:p-16">
-                <div className="flex flex-col p-4 gap-12">
-                    <h1 className="xl:text-5xl text-4xl text-justify font-bold leading-[5rem] xl:leading-[6.5rem] text-secondary-200">
+                <div className="flex flex-col p-4 gap-8">
+                    <h1 className="xl:text-5xl text-2xl text-justify font-bold leading-[5rem] xl:leading-[6.5rem] text-secondary-200">
                         Necesitas{' '}
                         <span className="text-primary py-2 px-4 border-8 border-primary relative transition-all 
                         duration-500 ease-in-out inline-block">

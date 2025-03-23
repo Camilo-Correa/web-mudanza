@@ -8,14 +8,14 @@ const Header = () => {
     <section className="flex flex-col items-center space-y-4 ">
       {/* Logo centrado */}
       <div className="flex justify-center">
-        <a href='#' className='text-2xl font-bold relative p-2 bg-white'>
+        <a href='/home' className='text-2xl font-bold relative p-2 bg-white'>
         <RiTruckLine className="text-5xl text-gray-800" />
         </a>
       </div>
       <header className='flex items-center justify-between xl:justify-start w-full py-4 px-20 h-[10vh] z-50'>
       {/* Título centrado */}
       <div className="xk:w-1/6 text-center -mt-4">
-        <span className="text-2xl font-bold text-secondary-200 ">Transportes <span className='text-primary'>C & N</span> 
+        <span className="text-[18px] font-bold text-secondary-200 ">Transportes <span className='text-primary'>C & N</span> 
         </span>
       </div>
 
