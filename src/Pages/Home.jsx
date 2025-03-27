@@ -47,7 +47,7 @@ function Home() {
                         </span>
                     </h1>
                     <p className="text-gray-500 text-xl leading-[2.5rem] text-justify">
-                        Nos especializamos en hacer que cada mudanza sea una experiencia sin estrés. Con años de experiencia en el sector, nos hemos ganado la confianza de nuestros clientes gracias a la puntualidad, responsabilidad y atención personalizada.
+                        Nos especializamos en hacer que cada mudanza sea una experiencia sin estrés. Con amplia experiencia en el sector, nos hemos ganado la confianza de nuestros clientes gracias a la puntualidad, responsabilidad y atención personalizada.
                         Nuestro equipo maneja con cuidado cada objeto, asegurando que llegue en perfectas condiciones a su destino.
                     </p>
                     {/* Botón */}
