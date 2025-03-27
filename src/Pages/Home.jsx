@@ -1,30 +1,41 @@
 import React, { useState, useEffect } from 'react';
 
 function Home() {
-    const [currentText, setCurrentText] = useState("Mudarte");
-    const texts = ["Vaciado", "Embalaje", "Montaje", "Portes", "Traslado"];
-    const transitionInterval = 3000; // Tiempo en milisegundos para cambiar el texto
+    const [currentText, setCurrentText] = useState("Mudanzas");
+    const texts = ["Vaciados", "Embalajes", "Montajes", "Portes", "Traslados"];
+    const [currentStep, setCurrentStep] = useState(0);
+
+    const steps = [
+        "Recibimos tu solicitud",
+        "Enviamos un presupuesto",
+        "Coordinamos Todo",
+        "Realizamos el servicio",
+    ];
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentText(prevText => {
+            // Cambiar el texto principal
+            setCurrentText((prevText) => {
                 const currentIndex = texts.indexOf(prevText);
-                const nextIndex = (currentIndex + 1) % texts.length; // Ciclar entre los textos
+                const nextIndex = (currentIndex + 1) % texts.length;
                 return texts[nextIndex];
             });
-        }, transitionInterval);
 
-        return () => clearInterval(interval); // Limpiar el intervalo al desmontar el componente
-    }, []);
+            // Cambiar el paso activo
+            setCurrentStep((prevStep) => (prevStep + 1) % steps.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [texts.length, steps.length]);
 
     const handleWhatsAppContact = () => {
         const mensaje = "¡Hola! Me gustaría recibir más información sobre sus servicios de Mudanzas.";
         const whatsappURL = `https://wa.me/573006656727?text=${encodeURIComponent(mensaje)}`;
-        window.open(whatsappURL, '_blank'); // Abrir WhatsApp en una nueva pestaña
+        window.open(whatsappURL, '_blank');
     };
 
     return (
-        <section className="min-h-[90vh] grid grid-cols-1 xl:grid-cols-8 ">
+        <section className="min-h-[90vh] grid grid-cols-1 xl:grid-cols-8">
             {/* Información */}
             <div className="md:col-span-4 flex items-center justify-center p-8 xl:p-16">
                 <div className="flex flex-col p-4 gap-8">
@@ -53,21 +64,48 @@ function Home() {
             {/* Imagen */}
             <div className="md:col-span-4 flex items-center justify-center relative p-8 xl:p-16">
                 <img
-                    src="home-caja.jpg"
-                    className="w-[450px] h-[250px] md:w-[800px] md:h-[450px] object-cover xl:-mt-28"
+                    src="principal.png"
+                    className="w-[450px] h-[250px] md:w-[980px] md:h-[450px] object-cover xl:mt-18 py-5"
                     alt="Camión de transporte"
                 />
             </div>
-            {/* Sección Por Qué Elegirnos */}
-            <div className="md:col-span-8 p-8 bg-gray-100 rounded-lg flex flex-col items-center justify-center mt-8 shadow-md text-center">
-                <h1 className="text-2xl md:text-4xl font-bold text-primary mb-6">¿Por Qué Elegirnos? ✅</h1>
-                <ul className="text-gray-500 text-lg leading-[2rem] list-disc list-inside space-y-4 text-left sm:text-center">
-                    <li className="text-left">Compromiso con la puntualidad: Llegamos a la hora acordada y cumplimos los plazos.</li>
-                    <li className="text-left">Seguridad garantizada: Cuidamos tus pertenencias como si fueran nuestras.</li>
-                    <li className="text-left">Transparencia total: Sin costes ocultos ni sorpresas en el presupuesto.</li>
-                    <li className="text-left">Atención personalizada: Nos adaptamos a tus necesidades y te asesoramos.</li>
-                    <li className="text-left">Flota moderna: Vehículos equipados para proteger tus muebles y enseres.</li>
-                </ul>
+            {/* Sección Cómo trabajamos */}
+            <div className="md:col-span-8 p-8 flex flex-col lg:flex-row items-center gap-8 mt-8">
+                {/* Imagen */}
+                <div className="flex-1 flex justify-center">
+                    <img
+                        src="home-caja.jpg" 
+                        alt="Proceso"
+                        className="w-full max-w-[500px] rounded-lg shadow-lg object-cover"
+                    />
+                </div>
+                {/* Paso a paso */}
+                <div className="flex-1">
+                    <h2 className="text-3xl font-bold text-primary mb-4">¿Cómo trabajamos? 🛠️</h2>
+                    <p className="text-xl text-gray-500 mb-6">Nuestro proceso es sencillo y efectivo:</p>
+                    <div className="flex flex-col space-y-4">
+                        {steps.map((step, index) => (
+                            <div
+                                key={index}
+                                className={`relative p-4 rounded-lg flex items-center gap-4 transition-all duration-500 ${
+                                    currentStep === index 
+                                        ? 'bg-primary text-white shadow-lg' 
+                                        : 'bg-gray-200 text-gray-700'
+                                }`}
+                            >
+                                {/* Flecha */}
+                                <div className={`absolute left-0 h-full w-4 -ml-4 ${currentStep === index ? 'bg-primary' : 'bg-gray-300'}`}>
+                                    <div className="triangle"></div>
+                                </div>
+                                {/* Contenido */}
+                                <div>
+                                    <span className="font-bold text-lg">{`Paso ${index + 1}`}</span>
+                                    <p>{step}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     );
