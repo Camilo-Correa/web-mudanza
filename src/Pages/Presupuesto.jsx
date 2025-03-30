@@ -3,7 +3,6 @@ import emailjs from "emailjs-com";
 
 function Presupuesto() {
 
-
     const [formData, setFormData] = useState({
         nombre: '',
         correo: '',
@@ -46,10 +45,10 @@ function Presupuesto() {
       };
 
       emailjs.send(
-          "service_fqvie5s", 
-          "template_l2iy5u4", 
-          templateParams,
-          "mm7mxe_Ptgys6--FB"
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       )
       .then((response) => {
           console.log("Correo enviado con éxito", response);
@@ -76,7 +75,7 @@ function Presupuesto() {
 };
 
 return (
-  <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4 sm:p-8">
+  <div className="flex justify-center items-center min-h-screen bg-white p-4 sm:p-8">
     <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 w-full max-w-3xl">
       <h1 className="text-2xl sm:text-3xl font-bold text-secondary mb-6 text-center">
         Solicita tu Presupuesto

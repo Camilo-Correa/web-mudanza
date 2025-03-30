@@ -27,7 +27,7 @@ export default function App() {
       {/* Botón flotante de WhatsApp */}
       <div className="fixed bottom-8 right-8">
         <WhatsAppButton
-          phone="34612345678"
+          phone="34613816121 "
           message="Hola, quisiera obtener más información sobre sus servicios."
           label="Contáctanos"
         />

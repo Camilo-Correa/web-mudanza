@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from "emailjs-com";
 
 function Home() {
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [country, setCountry] = useState("España");
+    const [isSent, setIsSent] = useState(false);
+
     const [currentText, setCurrentText] = useState("Mudanzas");
     const texts = ["Vaciados", "Embalajes", "Montajes", "Portes", "Traslados"];
     const [currentStep, setCurrentStep] = useState(0);
@@ -12,26 +17,45 @@ function Home() {
         "Realizamos el servicio",
     ];
 
+    const countryCodes = {
+        "España": "+34",
+        "Francia": "+33",
+        "Portugal": "+351",
+        "Italia": "+39",
+        "Andorra": "+376",
+        "Marruecos": "+212"
+    };
+    
+    const countries = Object.keys(countryCodes);
+
     useEffect(() => {
         const interval = setInterval(() => {
-            // Cambiar el texto principal
             setCurrentText((prevText) => {
                 const currentIndex = texts.indexOf(prevText);
                 const nextIndex = (currentIndex + 1) % texts.length;
                 return texts[nextIndex];
             });
-
-            // Cambiar el paso activo
             setCurrentStep((prevStep) => (prevStep + 1) % steps.length);
         }, 5000);
 
         return () => clearInterval(interval);
     }, [texts.length, steps.length]);
 
-    const handleWhatsAppContact = () => {
-        const mensaje = "¡Hola! Me gustaría recibir más información sobre sus servicios de Mudanzas.";
-        const whatsappURL = `https://wa.me/573006656727?text=${encodeURIComponent(mensaje)}`;
-        window.open(whatsappURL, '_blank');
+    const handleCallRequest = async () => {
+        const templateParams = { telefono: `${countryCodes[country]} ${phoneNumber}` };
+
+        try {
+            await emailjs.send(
+                process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                process.env.REACT_APP_EMAILJS_TEMPLATE_ID_HOME,
+                templateParams,
+                process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+            );
+            
+            setIsSent(true);
+        } catch (error) {
+            console.error("Error enviando el correo:", error);
+        }
     };
 
     return (
@@ -52,12 +76,42 @@ function Home() {
                     </p>
                     {/* Botón */}
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                        <button 
-                            onClick={handleWhatsAppContact} 
-                            className="w-full xl:w-auto bg-primary text-white py-2 px-8 rounded-lg hover:bg-primary-dark transition-transform transform hover:scale-105 text-xl"
-                        >
-                            Contáctanos
-                        </button>
+                        {!isSent ? (
+                            <>
+                                <select
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
+                                    className="w-full xl:w-auto border p-2 rounded-lg text-xl"
+                                >
+                                    {countries.map((c) => (
+                                        <option key={c} value={c}>{c} ({countryCodes[c]})</option>
+                                    ))}
+                                </select>
+                                <input
+                                    type="tel"
+                                    placeholder="Introduce tu teléfono"
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    className="w-full xl:w-auto border p-2 rounded-lg text-xl"
+                                />
+                                <button 
+                                    onClick={handleCallRequest} 
+                                    className="w-full xl:w-auto bg-primary text-white py-2 px-8 rounded-lg hover:bg-primary-dark transition-transform transform hover:scale-105 text-xl"
+                                >
+                                    Te Llamamos
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <span className="text-green-600 font-bold text-xl">Te contactaremos pronto 📞</span>
+                                <button
+                                    onClick={() => setIsSent(false)}
+                                    className="w-full xl:w-auto bg-secondary-200 text-white py-2 px-6 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 text-lg"
+                                >
+                                    Pedir otra llamada
+                                </button>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
@@ -93,11 +147,7 @@ function Home() {
                                         : 'bg-gray-200 text-gray-700'
                                 }`}
                             >
-                                {/* Flecha */}
-                                <div className={`absolute left-0 h-full w-4 -ml-4 ${currentStep === index ? 'bg-primary' : 'bg-gray-300'}`}>
-                                    <div className="triangle"></div>
-                                </div>
-                                {/* Contenido */}
+                                <div className={`absolute left-0 h-full w-4 -ml-4 ${currentStep === index ? 'bg-primary' : 'bg-gray-300'}`}></div>
                                 <div>
                                     <span className="font-bold text-lg">{`Paso ${index + 1}`}</span>
                                     <p>{step}</p>
