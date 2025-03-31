@@ -43,20 +43,27 @@ function Home() {
 
     const handleCallRequest = async () => {
         const templateParams = { telefono: `${countryCodes[country]} ${phoneNumber}` };
-
+    
+        console.log("import.meta.env:", import.meta.env);
+        console.log("Clave pública:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+        console.log("Service ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+        console.log("Template ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+        console.log("Template ID Home:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME);
+    
         try {
             await emailjs.send(
-                process.env.REACT_APP_EMAILJS_SERVICE_ID,
-                process.env.REACT_APP_EMAILJS_TEMPLATE_ID_HOME,
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME,
                 templateParams,
-                process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Aquí estaba el error
             );
-            
+    
             setIsSent(true);
         } catch (error) {
             console.error("Error enviando el correo:", error);
         }
     };
+    
 
     return (
         <section className="min-h-[90vh] grid grid-cols-1 xl:grid-cols-8">
