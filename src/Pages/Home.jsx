@@ -78,8 +78,8 @@ function Home() {
                         </span>
                     </h1>
                     <p className="text-gray-500 text-xl leading-[2.5rem] text-justify">
-                        Nos especializamos en hacer que cada mudanza sea una experiencia sin estrés. Con años de experiencia en el sector, nos hemos ganado la confianza de nuestros clientes gracias a la puntualidad, responsabilidad y atención personalizada.
-                        Nuestro equipo maneja con cuidado cada objeto, asegurando que llegue en perfectas condiciones a su destino.
+                    Nos especializamos en garantizar mudanzas eficientes y sin contratiempos. Con una amplia trayectoria en el sector, hemos logrado la confianza de nuestros clientes gracias a nuestro compromiso, puntualidad y atención personalizada.
+                    Cada objeto es tratado con el máximo cuidado, asegurando su llegada en perfectas condiciones a su destino.
                     </p>
                     {/* Botón */}
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4">

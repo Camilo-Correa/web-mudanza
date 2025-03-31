@@ -40,28 +40,28 @@ const Header = ({ darkMode, toggleDarkMode }) => {
             Home
           </Link>
           <Link
-            to="/services"
+            to="/servicios-mudanzas"
             className="hover:text-primary dark:hover:text-gray-300 md:mt-8"
             onClick={() => setShowMenu(false)}
           >
             Servicios
           </Link>
           <Link
-            to="/presupuesto"
+            to="/solicitar-presupuesto"
             className="hover:text-primary dark:hover:text-gray-300 md:mt-8"
             onClick={() => setShowMenu(false)}
           >
             Presupuesto
           </Link>
           <Link
-            to="/contacto"
+            to="/contacto-transportes"
             className="hover:text-primary dark:hover:text-gray-300 md:mt-8"
             onClick={() => setShowMenu(false)}
           >
             Contacto
           </Link>
           <Link
-            to="/consejos"
+            to="/consejos-mudanzas"
             className="hover:text-primary dark:hover:text-gray-300 md:mt-8"
             onClick={() => setShowMenu(false)}
           >
