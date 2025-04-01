@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Pages/Consejos.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Pages/Consejos.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+
+/**
+ * Componente Consejos que muestra una lista de recomendaciones para realizar una mudanza eficiente.
+ *
+ * @component
+ * @returns {JSX.Element} Sección con consejos útiles para una mudanza organizada.
+ */
+
+
+function Consejos() {
+    const tips = [
+        {
+            title: "Organiza con tiempo 🕒",
+            description:
+                "Planifica tu mudanza al menos con dos semanas de anticipación. Haz una lista de tareas y prioriza lo que necesitas empacar primero.",
+            image: "consejos-tiempo.jpg",
+        },
+        {
+            title: "Etiqueta las cajas 🏷️",
+            description:
+                "Escribe claramente en cada caja lo que contiene y a qué habitación pertenece. Esto hará que desempacar sea mucho más fácil.",
+            image: "consejos-etiqueta.jpg",
+        },
+        {
+            title: "Protege los objetos frágiles 🥂",
+            description:
+                "Envuelve los artículos frágiles como platos y copas con papel burbuja o toallas para evitar daños durante el traslado.",
+            image: "consejos-fragil.jpg",
+        },
+        {
+            title: "Deshazte de lo innecesario ♻️",
+            description:
+                "Aprovecha la mudanza para donar o desechar cosas que ya no usas. Menos cosas significan menos estrés.",
+            image: "consejos-basura.jpg",
+        },
+        {
+            title: "Ten un kit de primeros días 🎒",
+            description:
+                "Empaca una caja o maleta con todo lo que necesitas para los primeros días: ropa, artículos de aseo y documentos importantes.",
+            image: "consejos-kit.jpg",
+        },
+        {
+            title: "Desarma lo que puedas 🔧",
+            description:
+                "Si tienes muebles grandes como camas o estanterías, desármalos para facilitar el traslado. Si no sabes cómo hacerlo, no te preocupes, nuestros profesionales pueden encargarse de ello.",
+            image: "consejo-desarmar.jpg",
+        }
+    ];
+
+    return (
+        &lt;section className="min-h-[90vh] bg-gray-50 p-8 xl:p-16">
+            &lt;div className="text-center mb-12">
+                &lt;h1 className="text-2xl md:text-4xl font-bold text-secondary-200">
+                    Consejos para una Mudanza Perfecta 🚚✨
+                &lt;/h1>
+                &lt;p className="text-lg text-gray-500 mt-4">
+                    Aquí encontrarás los mejores tips para que tu mudanza sea rápida, sencilla y sin contratiempos.
+                &lt;/p>
+            &lt;/div>
+
+            {/* Lista de consejos */}
+            &lt;div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {tips.map((tip, index) => (
+                    &lt;div
+                        key={index}
+                        className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                    >
+                        {/* Imagen */}
+                        &lt;img
+                            src={tip.image}
+                            alt={tip.title}
+                            className="w-full h-[200px] object-cover"
+                        />
+                        {/* Contenido */}
+                        &lt;div className="p-6">
+                            &lt;h2 className="text-xl font-bold text-primary mb-4">{tip.title}&lt;/h2>
+                            &lt;p className="text-gray-600">{tip.description}&lt;/p>
+                        &lt;/div>
+                    &lt;/div>
+                ))}
+            &lt;/div>
+        &lt;/section>
+    );
+}
+
+export default Consejos;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Consejos">Consejos</a></li><li><a href="global.html#Contacto">Contacto</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Presupuesto">Presupuesto</a></li><li><a href="global.html#ServiceCard">ServiceCard</a></li><li><a href="global.html#Services">Services</a></li><li><a href="global.html#WhatsAppButton">WhatsAppButton</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Mar 31 2025 19:14:41 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

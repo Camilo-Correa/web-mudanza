@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Pages/Home.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Pages/Home.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react';
+import emailjs from "emailjs-com";
+
+/**
+ * Componente Home que muestra la página principal con información sobre los servicios de mudanza,
+ * un formulario para solicitar una llamada y una sección explicativa sobre el proceso de trabajo.
+ *
+ * @component
+ * @returns {JSX.Element} Sección principal de la página con encabezado dinámico, formulario de contacto y pasos del servicio.
+ */
+
+
+function Home() {
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [country, setCountry] = useState("España");
+    const [isSent, setIsSent] = useState(false);
+
+    const [currentText, setCurrentText] = useState("Mudanzas");
+    const texts = ["Vaciados", "Embalajes", "Montajes", "Portes", "Traslados"];
+    const [currentStep, setCurrentStep] = useState(0);
+
+    const steps = [
+        "Recibimos tu solicitud",
+        "Enviamos un presupuesto",
+        "Coordinamos Todo",
+        "Realizamos el servicio",
+    ];
+
+    const countryCodes = {
+        "España": "+34",
+        "Francia": "+33",
+        "Portugal": "+351",
+        "Italia": "+39",
+        "Andorra": "+376",
+        "Marruecos": "+212"
+    };
+    
+    const countries = Object.keys(countryCodes);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentText((prevText) => {
+                const currentIndex = texts.indexOf(prevText);
+                const nextIndex = (currentIndex + 1) % texts.length;
+                return texts[nextIndex];
+            });
+            setCurrentStep((prevStep) => (prevStep + 1) % steps.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [texts.length, steps.length]);
+
+    const handleCallRequest = async () => {
+        const templateParams = { telefono: `${countryCodes[country]} ${phoneNumber}` };
+    
+        console.log("import.meta.env:", import.meta.env);
+        console.log("Clave pública:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+        console.log("Service ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+        console.log("Template ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+        console.log("Template ID Home:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME);
+    
+        try {
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME,
+                templateParams,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Aquí estaba el error
+            );
+    
+            setIsSent(true);
+        } catch (error) {
+            console.error("Error enviando el correo:", error);
+        }
+    };
+    
+
+    return (
+        &lt;section className="min-h-[90vh] grid grid-cols-1 xl:grid-cols-8">
+            {/* Información */}
+            &lt;div className="md:col-span-4 flex items-center justify-center p-8 xl:p-16">
+                &lt;div className="flex flex-col p-4 gap-8">
+                    &lt;h1 className="xl:text-5xl text-2xl text-justify font-bold leading-[5rem] xl:leading-[6.5rem] text-secondary-200">
+                        Necesitas{' '}
+                        &lt;span className="text-primary py-2 px-4 border-8 border-primary relative transition-all 
+                        duration-500 ease-in-out inline-block">
+                            {currentText}
+                        &lt;/span>
+                    &lt;/h1>
+                    &lt;p className="text-gray-500 text-xl leading-[2.5rem] text-justify">
+                    Nos especializamos en garantizar mudanzas eficientes y sin contratiempos. Con una amplia trayectoria en el sector, hemos logrado la confianza de nuestros clientes gracias a nuestro compromiso, puntualidad y atención personalizada.
+                    Cada objeto es tratado con el máximo cuidado, asegurando su llegada en perfectas condiciones a su destino.
+                    &lt;/p>
+                    {/* Botón */}
+                    &lt;div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                        {!isSent ? (
+                            &lt;>
+                                &lt;select
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
+                                    className="w-full xl:w-auto border p-2 rounded-lg text-xl"
+                                >
+                                    {countries.map((c) => (
+                                        &lt;option key={c} value={c}>{c} ({countryCodes[c]})&lt;/option>
+                                    ))}
+                                &lt;/select>
+                                &lt;input
+                                    type="tel"
+                                    placeholder="Introduce tu teléfono"
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    className="w-full xl:w-auto border p-2 rounded-lg text-xl"
+                                />
+                                &lt;button 
+                                    onClick={handleCallRequest} 
+                                    className="w-full xl:w-auto bg-primary text-white py-2 px-8 rounded-lg hover:bg-primary-dark transition-transform transform hover:scale-105 text-xl"
+                                >
+                                    Te Llamamos
+                                &lt;/button>
+                            &lt;/>
+                        ) : (
+                            &lt;>
+                                &lt;span className="text-green-600 font-bold text-xl">Te contactaremos pronto 📞&lt;/span>
+                                &lt;button
+                                    onClick={() => setIsSent(false)}
+                                    className="w-full xl:w-auto bg-secondary-200 text-white py-2 px-6 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 text-lg"
+                                >
+                                    Pedir otra llamada
+                                &lt;/button>
+                            &lt;/>
+                        )}
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            {/* Imagen */}
+            &lt;div className="md:col-span-4 flex items-center justify-center relative p-8 xl:p-16">
+                &lt;img
+                    src="principal.png"
+                    className="w-[450px] h-[250px] md:w-[980px] md:h-[450px] object-cover xl:mt-18 py-5"
+                    alt="Camión de transporte"
+                />
+            &lt;/div>
+            {/* Sección Cómo trabajamos */}
+            &lt;div className="md:col-span-8 p-8 flex flex-col lg:flex-row items-center gap-8 mt-8">
+                {/* Imagen */}
+                &lt;div className="flex-1 flex justify-center">
+                    &lt;img
+                        src="home-caja.jpg" 
+                        alt="Proceso"
+                        className="w-full max-w-[500px] rounded-lg shadow-lg object-cover"
+                    />
+                &lt;/div>
+                {/* Paso a paso */}
+                &lt;div className="flex-1">
+                    &lt;h2 className="text-3xl font-bold text-primary mb-4">¿Cómo trabajamos? 🛠️&lt;/h2>
+                    &lt;p className="text-xl text-gray-500 mb-6">Nuestro proceso es sencillo y efectivo:&lt;/p>
+                    &lt;div className="flex flex-col space-y-4">
+                        {steps.map((step, index) => (
+                            &lt;div
+                                key={index}
+                                className={`relative p-4 rounded-lg flex items-center gap-4 transition-all duration-500 ${
+                                    currentStep === index 
+                                        ? 'bg-primary text-white shadow-lg' 
+                                        : 'bg-gray-200 text-gray-700'
+                                }`}
+                            >
+                                &lt;div className={`absolute left-0 h-full w-4 -ml-4 ${currentStep === index ? 'bg-primary' : 'bg-gray-300'}`}>&lt;/div>
+                                &lt;div>
+                                    &lt;span className="font-bold text-lg">{`Paso ${index + 1}`}&lt;/span>
+                                    &lt;p>{step}&lt;/p>
+                                &lt;/div>
+                            &lt;/div>
+                        ))}
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/section>
+    );
+}
+
+export default Home;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Consejos">Consejos</a></li><li><a href="global.html#Contacto">Contacto</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Presupuesto">Presupuesto</a></li><li><a href="global.html#ServiceCard">ServiceCard</a></li><li><a href="global.html#Services">Services</a></li><li><a href="global.html#WhatsAppButton">WhatsAppButton</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Mar 31 2025 19:14:42 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

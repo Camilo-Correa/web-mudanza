@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Pages/Services.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Pages/Services.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { TfiLocationPin, TfiTruck } from "react-icons/tfi";
+import { IoIosAirplane } from "react-icons/io";
+import { FaBuildingCircleArrowRight } from "react-icons/fa6";
+import { TfiDropboxAlt } from "react-icons/tfi";
+
+
+/**
+ * Componente Services que muestra los diferentes servicios de mudanza ofrecidos por la empresa.
+ * Cada servicio incluye una imagen, un mensaje destacado, un icono, un título y una descripción detallada.
+ * Los servicios mostrados son mudanzas locales, nacionales, internacionales, transporte de muebles y vaciado de pisos.
+ *
+ * @component
+ * @returns {JSX.Element} Sección que muestra los servicios de mudanza.
+ */
+
+
+function Services() {
+  const services = [
+    {
+      id: 1,
+      image: "mudanza-local.jpg",
+      message: "Cuidamos tus cosas con dedicación",
+      icon: TfiLocationPin,
+      title: "Mudanzas Locales",
+      description:
+        "Si necesitas trasladarte dentro de la ciudad, lo hacemos sin estrés. Nos ocupamos del desmontaje, embalaje, traslado y montaje de tus muebles, garantizando que lleguen en perfecto estado.",
+    },
+    {
+      id: 2,
+      image: "mudanza2.jpg",
+      message: "Servicio seguro en todo el país",
+      icon: TfiTruck,
+      title: "Mudanzas Nacionales",
+      description:
+        "Mudarse a otra ciudad puede ser complicado, pero con C&amp;N Transportes, te aseguramos un servicio profesional y seguro en todo el territorio nacional.",
+    },
+    {
+      id: 3,
+      image: "mudanza3.jpg",
+      message: "Llevamos tus cosas al mundo",
+      icon: IoIosAirplane,
+      title: "Mudanzas Internacionales",
+      description:
+        "Si te mudas fuera del país, nos encargamos de toda la logística para que tus pertenencias lleguen en óptimas condiciones a su destino.",
+    },
+    {
+      id: 4,
+      image: "mudanza4.jpg",
+      message: "Traslado rápido y seguro",
+      icon: TfiDropboxAlt,
+      title: "Transporte de Muebles y Enseres",
+      description:
+        "¿Necesitas trasladar un mueble o un electrodoméstico sin hacer una mudanza completa? Lo hacemos por ti de manera rápida y segura.",
+    },
+    {
+      id: 5,
+      image: "mudanza3.jpg",
+      message: "Desocupa sin complicaciones",
+      icon: FaBuildingCircleArrowRight,
+      title: "Vaciado de Pisos y Locales",
+      description:
+        "¿Necesitas desocupar una vivienda o local? Nos encargamos del desmontaje y retiro de mobiliario, con opción de reciclaje o donación de los objetos que ya no necesites.",
+    },
+  ];
+
+  return (
+    &lt;section className="min-h-[90vh] bg-gray-50 p-8 xl:p-16">
+        &lt;div className="p-4 xl:p-8">
+        {/* Título principal */}
+        &lt;div className="text-center mb-10">
+            &lt;h1 className="text-[33px] font-bold text-secondary mb-4">Nuestros Servicios&lt;/h1>
+            &lt;p className="text-gray-500 text-xl leading-[2.5rem] text-justify">
+            En Transportes C &amp; N ofrecemos una amplia gama de servicios de transporte
+            y mudanzas para particulares y empresas. Nos adaptamos a tus necesidades
+            en cualquier lugar.
+            &lt;/p>
+        &lt;/div>
+
+        {/* Servicios */}
+        &lt;div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+            &lt;div
+                key={service.id}
+                className="flex flex-col items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300 text-center"
+            >
+                {/* Imagen con mensaje al pasar el mouse */}
+                &lt;div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg">
+                &lt;img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
+                />
+                &lt;div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    &lt;p className="text-white text-lg font-medium px-4">{service.message}&lt;/p>
+                &lt;/div>
+                &lt;/div>
+
+                {/* Icono y título */}
+                &lt;div className="flex items-center justify-center mb-2">
+                &lt;service.icon className="text-secondary text-3xl mr-2" />
+                &lt;h2 className="text-lg font-bold text-gray-700">{service.title}&lt;/h2>
+                &lt;/div>
+
+                {/* Descripción */}
+                &lt;p className="text-sm text-gray-500 leading-relaxed">
+                {service.description}
+                &lt;/p>
+            &lt;/div>
+            ))}
+        &lt;/div>
+        &lt;/div>
+    &lt;/section>
+  );
+}
+
+export default Services;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Consejos">Consejos</a></li><li><a href="global.html#Contacto">Contacto</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Presupuesto">Presupuesto</a></li><li><a href="global.html#ServiceCard">ServiceCard</a></li><li><a href="global.html#Services">Services</a></li><li><a href="global.html#WhatsAppButton">WhatsAppButton</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Mar 31 2025 19:14:42 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
