@@ -4,6 +4,17 @@ import { IoIosAirplane } from "react-icons/io";
 import { FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { TfiDropboxAlt } from "react-icons/tfi";
 
+
+/**
+ * Componente Services que muestra los diferentes servicios de mudanza ofrecidos por la empresa.
+ * Cada servicio incluye una imagen, un mensaje destacado, un icono, un título y una descripción detallada.
+ * Los servicios mostrados son mudanzas locales, nacionales, internacionales, transporte de muebles y vaciado de pisos.
+ *
+ * @component
+ * @returns {JSX.Element} Sección que muestra los servicios de mudanza.
+ */
+
+
 function Services() {
   const services = [
     {
@@ -13,7 +24,7 @@ function Services() {
       icon: TfiLocationPin,
       title: "Mudanzas Locales",
       description:
-        "Si necesitas trasladarte dentro de la ciudad, lo hacemos sin estrés. Nos ocupamos del desmontaje, embalaje, traslado y montaje de tus muebles, garantizando que lleguen en perfecto estado.",
+        "Mudanzas en Asturias sin complicaciones. Nos ocupamos del embalaje, desmontaje y traslado de tus muebles para que todo llegue perfecto a tu nuevo hogar.",
     },
     {
       id: 2,
@@ -22,7 +33,7 @@ function Services() {
       icon: TfiTruck,
       title: "Mudanzas Nacionales",
       description:
-        "Mudarse a otra ciudad puede ser complicado, pero con C&N Transportes, te aseguramos un servicio profesional y seguro en todo el territorio nacional.",
+        "¿Te mudas a otra ciudad de España? Con C&N Transportes, tu mudanza será fácil y segura.",
     },
     {
       id: 3,
@@ -31,7 +42,7 @@ function Services() {
       icon: IoIosAirplane,
       title: "Mudanzas Internacionales",
       description:
-        "Si te mudas fuera del país, nos encargamos de toda la logística para que tus pertenencias lleguen en óptimas condiciones a su destino.",
+        "Nos encargamos de todo el proceso para que tu mudanza internacional sea rápida y sin imprevistos.",
     },
     {
       id: 4,
@@ -40,7 +51,7 @@ function Services() {
       icon: TfiDropboxAlt,
       title: "Transporte de Muebles y Enseres",
       description:
-        "¿Necesitas trasladar un mueble o un electrodoméstico sin hacer una mudanza completa? Lo hacemos por ti de manera rápida y segura.",
+        "Transporte de muebles y electrodomésticos en Asturias y toda España, con máxima seguridad y puntualidad.",
     },
     {
       id: 5,
@@ -49,7 +60,7 @@ function Services() {
       icon: FaBuildingCircleArrowRight,
       title: "Vaciado de Pisos y Locales",
       description:
-        "¿Necesitas desocupar una vivienda o local? Nos encargamos del desmontaje y retiro de mobiliario, con opción de reciclaje o donación de los objetos que ya no necesites.",
+        "Servicio de vaciado de pisos y locales en Asturias: recogemos, reciclamos y donamos lo que ya no necesites.",
     },
   ];
 
@@ -58,11 +69,11 @@ function Services() {
         <div className="p-4 xl:p-8">
         {/* Título principal */}
         <div className="text-center mb-10">
-            <h1 className="text-[33px] font-bold text-secondary mb-4">Nuestros Servicios</h1>
+            <h1 className="text-[33px] font-bold text-secondary mb-4">Servicios de Mudanzas en Asturias</h1>
             <p className="text-gray-500 text-xl leading-[2.5rem] text-justify">
-            En Transportes C & N ofrecemos una amplia gama de servicios de transporte
-            y mudanzas para particulares y empresas. Nos adaptamos a tus necesidades
-            en cualquier lugar.
+            En Transportes C & N, realizamos mudanzas en Asturias y en toda España. 
+            Ofrecemos un servicio ágil y seguro para particulares y empresas, garantizando 
+            un traslado sin preocupaciones.
             </p>
         </div>
 

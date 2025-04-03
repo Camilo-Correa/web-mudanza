@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import { RiMenu3Fill, RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
+/**
+ * Componente Header que representa la barra de navegación de la aplicación.
+ * Contiene un logo, enlaces de navegación y un botón de menú para dispositivos móviles.
+ *
+ * @component
+ * @param {Object} props - Propiedades del componente.
+ * @param {boolean} props.darkMode - Indica si el modo oscuro está activado.
+ * @param {Function} props.toggleDarkMode - Función para alternar el modo oscuro.
+ * @returns {JSX.Element} El componente Header.
+ */
+
 const Header = ({ darkMode, toggleDarkMode }) => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -21,14 +32,14 @@ const Header = ({ darkMode, toggleDarkMode }) => {
           </a>
 
           {/* Título */}
-          <span className="text-[16px] md:text-[20px] font-bold text-secondary-200 md:mt-4">
+          <span className="text-[18px] md:text-[20px] font-bold text-secondary-200 md:mt-4">
             Transportes <span className="text-primary">C & N</span>
           </span>
         </div>
 
         {/* Menú centrado */}
         <nav
-          className={`fixed bg-white dark:bg-gray-800 w-[70%] md:w-[40%] xl:w-full h-full text-[16px] md:text-[18px] ${
+          className={`fixed bg-white dark:bg-gray-800 w-[70%] md:w-[40%] xl:w-full h-full text-[16px] md:text-[18px] mt-6 ${
             showMenu ? "left-0" : "-left-full"
           } top-0 xl:static flex-1 flex flex-col xl:flex-row items-center justify-center gap-6 md:gap-10 transition-all duration-500 z-50`}
         >

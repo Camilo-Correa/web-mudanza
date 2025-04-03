@@ -1,5 +1,18 @@
 import { FaWhatsapp } from "react-icons/fa";
 
+/**
+ * Componente WhatsAppButton que permite redirigir a WhatsApp con un mensaje predefinido.
+ *
+ * @component
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.phone - Número de teléfono de WhatsApp (incluyendo código de país).
+ * @param {string} props.message - Mensaje predefinido que se enviará en el chat.
+ * @param {string} [props.label="Contactar por WhatsApp"] - Texto del botón (opcional).
+ * @param {string} [props.className=""] - Clases CSS adicionales para personalización.
+ * @returns {JSX.Element} El botón de WhatsApp.
+ */
+
+
 const WhatsAppButton = ({ phone, message, label, className }) => {
   const handleWhatsAppRedirect = () => {
     const encodedMessage = encodeURIComponent(message);

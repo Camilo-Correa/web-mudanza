@@ -1,5 +1,19 @@
 import React from "react";
 
+/**
+ * Componente ServiceCard que muestra información sobre un servicio.
+ * Incluye una imagen, un ícono, un título y una descripción.
+ *
+ * @component
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.image - URL de la imagen del servicio.
+ * @param {React.ComponentType} props.icon - Componente del ícono (de react-icons u otro).
+ * @param {string} props.title - Título del servicio.
+ * @param {string} props.description - Descripción breve del servicio.
+ * @returns {JSX.Element} El componente ServiceCard.
+ */
+
+
 function ServiceCard({ image, icon: Icon, title, description }) {
   return (
     <div className="flex flex-col gap-4 items-center p-4 bg-white shadow-md rounded-2xl">

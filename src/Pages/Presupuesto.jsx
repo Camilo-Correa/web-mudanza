@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import emailjs from "emailjs-com";
 
+/**
+ * Componente Presupuesto que permite a los usuarios solicitar un presupuesto para un servicio de mudanza.
+ * El formulario incluye campos para los detalles del servicio, como nombre, correo, teléfono, direcciones,
+ * objetos grandes y servicios adicionales. Al enviar el formulario, se envía un correo electrónico con los detalles
+ * utilizando EmailJS.
+ *
+ * @component
+ * @returns {JSX.Element} Formulario para solicitar presupuesto de mudanza.
+ */
+
+
 function Presupuesto() {
 
     const [formData, setFormData] = useState({

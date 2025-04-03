@@ -1,0 +1,12 @@
+{
+    "source": {
+        "include": [
+            "src/components",
+            "src/Pages"
+        ]
+    },
+    "opts": {
+        "destination": "./out",
+        "recurse": true
+    }
+}

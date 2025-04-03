@@ -1,5 +1,13 @@
 import { RiTruckLine, RiInstagramLine, RiFacebookLine, RiTwitterLine } from "react-icons/ri";
 
+/**
+ * Componente Footer que representa el pie de página de la aplicación.
+ * Contiene el logo de la empresa, una breve descripción, enlaces a redes sociales y derechos de autor.
+ *
+ * @component
+ * @returns {JSX.Element} El componente Footer.
+ */
+
 function Footer() {
   return (
     <footer className="bg-secondary-200 p-10 xl:p-20 text-white">

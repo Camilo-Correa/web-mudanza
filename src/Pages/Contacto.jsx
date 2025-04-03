@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Componente Contacto que muestra la información de contacto de la empresa junto con un mapa de ubicación.
+ *
+ * @component
+ * @returns {JSX.Element} Sección con los medios de contacto y la localización de la empresa en un mapa.
+ */
+
 function Contacto() {
     return (
         <section className="min-h-[90vh] flex flex-col items-center bg-gray-50 p-8 xl:p-16">
@@ -17,20 +24,14 @@ function Contacto() {
 
             {/* Información de contacto */}
             <div className="text-center space-y-6">
-                <h1 className="text-2xl md:text-4xl font-bold text-secondary-200">¡Contáctanos! 📞</h1>
+                <h1 className="text-2xl md:text-4xl font-bold text-secondary-200">¡Tu mudanza en Asturias y toda España empieza aquí! 📦🚛</h1>
                 <p className="text-lg text-gray-500">
-                    Siempre estamos aquí para ayudarte. Puedes ponerte en contacto con nosotros por los siguientes medios:
+                    Estamos listos para ayudarte con tu mudanza en Asturias y en cualquier punto de España. Contáctanos y te asesoramos sin compromiso.
                 </p>
 
                 <div className="space-y-4 text-lg text-gray-600">
                     <p>
-                        📧 <span className="font-bold text-primary">correo@empresa.com</span>
-                    </p>
-                    <p>
-                        ☎️ <span className="font-bold text-primary">+34 123 456 789</span>
-                    </p>
-                    <p>
-                        📱 <span className="font-bold text-primary">+34 987 654 321</span>
+                        📱 <span className="font-bold text-primary">+34 613 816 121</span>
                     </p>
                 </div>
             </div>

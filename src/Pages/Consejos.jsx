@@ -1,41 +1,49 @@
 import React from 'react';
 
+/**
+ * Componente Consejos que muestra una lista de recomendaciones para realizar una mudanza eficiente.
+ *
+ * @component
+ * @returns {JSX.Element} Sección con consejos útiles para una mudanza organizada.
+ */
+
+
 function Consejos() {
     const tips = [
         {
             title: "Organiza con tiempo 🕒",
             description:
-                "Planifica tu mudanza al menos con dos semanas de anticipación. Haz una lista de tareas y prioriza lo que necesitas empacar primero.",
+                "Si te mudas en Asturias, intenta planificar con al menos dos semanas de antelación. Haz una lista de tareas para evitar imprevistos.",
             image: "consejos-tiempo.jpg",
         },
         {
             title: "Etiqueta las cajas 🏷️",
             description:
-                "Escribe claramente en cada caja lo que contiene y a qué habitación pertenece. Esto hará que desempacar sea mucho más fácil.",
+                "Pon etiquetas en cada caja indicando su contenido y la habitación de destino. Esto te ahorrará tiempo al llegar a tu nuevo hogar.",
             image: "consejos-etiqueta.jpg",
         },
         {
             title: "Protege los objetos frágiles 🥂",
             description:
-                "Envuelve los artículos frágiles como platos y copas con papel burbuja o toallas para evitar daños durante el traslado.",
+                "Usa papel burbuja o mantas para proteger cristalería y vajilla. En Asturias, el clima húmedo puede afectar algunos materiales, así que protégelos bien.",
             image: "consejos-fragil.jpg",
         },
         {
             title: "Deshazte de lo innecesario ♻️",
             description:
-                "Aprovecha la mudanza para donar o desechar cosas que ya no usas. Menos cosas significan menos estrés.",
+                "Haz una limpieza antes de mudarte: dona, recicla o vende lo que no necesitas. Menos cosas, menos esfuerzo.",
             image: "consejos-basura.jpg",
         },
         {
             title: "Ten un kit de primeros días 🎒",
             description:
-                "Empaca una caja o maleta con todo lo que necesitas para los primeros días: ropa, artículos de aseo y documentos importantes.",
+                "Prepara un kit con lo esencial para los primeros días: documentos, artículos de aseo y ropa cómoda. Así evitarás buscar entre las cajas.",
             image: "consejos-kit.jpg",
         },
         {
             title: "Desarma lo que puedas 🔧",
             description:
-                "Si tienes muebles grandes como camas o estanterías, desármalos para facilitar el traslado. Si no sabes cómo hacerlo, no te preocupes, nuestros profesionales pueden encargarse de ello.",
+                "Si tienes muebles grandes, desmóntalos para facilitar el traslado. En Asturias, muchas viviendas tienen accesos estrechos, así que esto puede ser clave.",
             image: "consejo-desarmar.jpg",
         }
     ];
@@ -44,10 +52,10 @@ function Consejos() {
         <section className="min-h-[90vh] bg-gray-50 p-8 xl:p-16">
             <div className="text-center mb-12">
                 <h1 className="text-2xl md:text-4xl font-bold text-secondary-200">
-                    Consejos para una Mudanza Perfecta 🚚✨
+                Consejos para una Mudanza sin Estrés en Asturias o Toda España✨
                 </h1>
                 <p className="text-lg text-gray-500 mt-4">
-                    Aquí encontrarás los mejores tips para que tu mudanza sea rápida, sencilla y sin contratiempos.
+                Descubre los mejores consejos para que tu mudanza en Asturias sea fácil y organizada, sin preocupaciones innecesarias.
                 </p>
             </div>
 
