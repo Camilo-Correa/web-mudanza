@@ -53,18 +53,12 @@ function Home() {
     const handleCallRequest = async () => {
         const templateParams = { telefono: `${countryCodes[country]} ${phoneNumber}` };
     
-        console.log("import.meta.env:", import.meta.env);
-        console.log("Clave pública:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-        console.log("Service ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
-        console.log("Template ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-        console.log("Template ID Home:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME);
-    
         try {
             await emailjs.send(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME,
                 templateParams,
-                import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Aquí estaba el error
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY 
             );
     
             setIsSent(true);
