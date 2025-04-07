@@ -15,6 +15,9 @@ function Home() {
     const [country, setCountry] = useState("España");
     const [isSent, setIsSent] = useState(false);
 
+    const [errorMessage, setErrorMessage] = useState("");
+
+
     const [currentText, setCurrentText] = useState("Mudanzas");
     const texts = ["Mudanzas","Vaciados", "Embalajes", "Montajes", "Portes", "Traslados"];
     const [currentStep, setCurrentStep] = useState(0);
@@ -34,6 +37,14 @@ function Home() {
         "Andorra": "+376",
         "Marruecos": "+212"
     };
+
+    //funcion para vaidar numeros
+    const isValidPhoneNumber = (number) => {
+        // Elimina espacios y valida solo números (9-15 dígitos)
+        const cleaned = number.replace(/\s+/g, '');
+        return /^\d{9,15}$/.test(cleaned);
+    };
+    
     
     const countries = Object.keys(countryCodes);
 
@@ -50,8 +61,20 @@ function Home() {
         return () => clearInterval(interval);
     }, [texts.length, steps.length]);
 
+    
+    console.log("SERVICE:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+console.log("TEMPLATE:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME);
+console.log("PUBLIC KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
     const handleCallRequest = async () => {
-        const templateParams = { telefono: `${countryCodes[country]} ${phoneNumber}` };
+        if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
+            setErrorMessage("Por favor, introduce un número de teléfono válido.");
+            return;
+        }
+    
+        setErrorMessage(""); // Limpiar mensajes anteriores
+    
+    const templateParams = { telefono: `${countryCodes[country]} ${phoneNumber}` };
     
         try {
             await emailjs.send(
@@ -62,8 +85,10 @@ function Home() {
             );
     
             setIsSent(true);
+            setPhoneNumber(""); // Limpiar campo
         } catch (error) {
             console.error("Error enviando el correo:", error);
+            setErrorMessage("Hubo un problema al enviar la solicitud.");
         }
     };
     
@@ -96,7 +121,7 @@ function Home() {
                     <div className="flex flex-col items-center md:items-start gap-4 w-full">
                         {!isSent ? (
                             <>
-                                <div className="w-full flex justifu-center md:justify-center">
+                                <div className="w-full flex justify-center md:justify-center">
                                 <select
                                     value={country}
                                     onChange={(e) => setCountry(e.target.value)}
@@ -113,7 +138,9 @@ function Home() {
                                     onChange={(e) => setPhoneNumber(e.target.value)}
                                     className="w-full md:w-auto border p-2 rounded-lg text-xl"
                                 />
+                                
                                 </div>
+
                                 <div className="w-full flex justify-center md:justify-center">
                                     <button 
                                         onClick={handleCallRequest} 
@@ -121,7 +148,11 @@ function Home() {
                                     >
                                         Solicita tu llamada gratuita
                                     </button>
+                                    {errorMessage && (
+                                    <p className="text-red-500 text-sm mt-2 text-center justify-center">{errorMessage}</p>
+                                )}
                                 </div>
+
                             </>
                         ) : (
                             <>
@@ -140,20 +171,23 @@ function Home() {
                 </div>
             </div>
             {/* Imagen */}
-            <div className="md:col-span-4 flex items-center justify-center relative p-8 xl:p-16">
+            <div className="md:col-span-4 flex items-center justify-center relative px-4 py-8 ">
+                <div className="flex justify-center items-center w-full">
                 <img
-                    src="principal.png"
-                    className="w-[450px] h-[250px] md:w-[980px] md:h-[450px] object-cover xl:mt-18 py-5"
-                    alt="Camión de transporte"
-                />
+                        src="principal.png"
+                        className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto object-contain rounded-lg shadow-md"
+                        alt="Camión de transporte"
+                    />
+                </div>
             </div>
+
             {/* Sección Cómo trabajamos */}
             <div className="md:col-span-8 p-8 flex flex-col lg:flex-row items-center gap-8 mt-8">
                 {/* Imagen */}
                 <div className="flex-1 flex justify-center">
                     <img
                         src="home-caja.jpg" 
-                        alt="Proceso"
+                        alt="Camion de la compañia"
                         className="w-full max-w-[500px] rounded-lg shadow-lg object-cover"
                     />
                 </div>
