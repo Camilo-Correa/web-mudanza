@@ -62,11 +62,11 @@ function Presupuesto() {
         process.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then((response) => {
-          console.log("Correo enviado con éxito", response);
+          console.log(response);
           setFormEnviado(true);
       })
       .catch((error) => {
-          console.error("Error enviando el correo", error);
+          console.error(error);
       });
   // Limpiar el formulario
   setFormData({
