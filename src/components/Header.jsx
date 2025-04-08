@@ -18,6 +18,21 @@ const Header = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <section className="flex flex-col items-center space-y-4">
+      {/* Barra superior con datos de contacto */}
+      <div className="w-full bg-primary text-white text-sm md:text-base flex justify-center px-4 md:px-20 py-2">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12">
+          <span className="flex items-center">
+            📧 <a href="mailto:contacto@transportescn-mudanzas.es" className="ml-2 hover:underline">
+              contacto@transportescn-mudanzas.es
+            </a>
+          </span>
+          <span className="flex items-center">
+            📞 <a href="tel:+34613816121" className="ml-2 hover:underline">
+              +34 613 816 121
+            </a>
+          </span>
+        </div>
+      </div>
       {/* Logo centrado */}
       <header className="flex items-center justify-between xl:justify-start w-full py-2 px-6 md:px-20 h-[8vh] z-50 mt-2">
         {/* Título centrado con ícono alineado a la izquierda */}
