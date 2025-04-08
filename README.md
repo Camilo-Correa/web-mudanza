@@ -119,6 +119,7 @@ graph TD
 
   Frontend --> WhatsApp_API
   Usuario --> WhatsApp_API
+```
 
 
 © 2025 - Transportes C&N. Todos los derechos reservados.
