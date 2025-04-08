@@ -61,11 +61,6 @@ function Home() {
         return () => clearInterval(interval);
     }, [texts.length, steps.length]);
 
-    
-    console.log("SERVICE:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
-console.log("TEMPLATE:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID_HOME);
-console.log("PUBLIC KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-
     const handleCallRequest = async () => {
         if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
             setErrorMessage("Por favor, introduce un número de teléfono válido.");
