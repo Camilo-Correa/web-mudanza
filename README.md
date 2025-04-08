@@ -100,25 +100,25 @@ Para contribuir o desplegar este sitio en un entorno propio, por favor solicita 
 
 ---
 
-## 🔁 Diagrama de Despliegue - Transportes C&N
+## Diagrama de Despliegue - Transportes C&N
 
 ```mermaid
 graph TD
-  A[👤 Usuario] --> B[🌐 Sitio Web en Vercel]
-  B --> C[🧠 React + Vite (Frontend)]
-  C --> D[📬 Formularios]
-  D --> E[📤 EmailJS]
-  E --> F[Gmail API]
-  F --> G[📨 Correo destino: contacto@transportescn-mudanzas.es]
-  G --> H[BCC: cesaralexandercorrea@hotmail.com]
+  Usuario --> Sitio_Web
+  Sitio_Web --> Frontend
+  Frontend --> Formularios
+  Formularios --> EmailJS
+  EmailJS --> Gmail_API
+  Gmail_API --> Correo_Destino
+  Correo_Destino --> BCC
 
-  B --> I[🔒 Variables de entorno en Vercel]
-  B --> J[🌩️ DNS en Cloudflare]
-  J --> K[📄 Dominio en IONOS]
-  K --> L[📧 Correo empresarial IONOS]
+  Sitio_Web --> Variables_Entorno
+  Sitio_Web --> DNS_Cloudflare
+  DNS_Cloudflare --> Dominio_IONOS
+  Dominio_IONOS --> Correo_Empresarial
 
-  C --> M[🔗 Botón WhatsApp API]
-  A --> M
+  Frontend --> WhatsApp_API
+  Usuario --> WhatsApp_API
 
 
 © 2025 - Transportes C&N. Todos los derechos reservados.
