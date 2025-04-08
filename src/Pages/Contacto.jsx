@@ -33,6 +33,14 @@ function Contacto() {
                     <p>
                         📱 <span className="font-bold text-primary">+34 613 816 121</span>
                     </p>
+                    <p>
+                        📧 <a
+                            href="mailto:contacto@transportescn-mudanzas.es"
+                            className="text-primary font-bold hover:underline"
+                        >
+                            contacto@transportescn-mudanzas.es
+                        </a>
+                    </p>
                 </div>
             </div>
         </section>
